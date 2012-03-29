@@ -29,4 +29,3 @@
 		echo $e->getMessage();
 	}
 ?>
-FOO
