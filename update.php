@@ -2,7 +2,7 @@
 	$config = array(
 			'S3' => array(
 				'key' => getenv('AWS_ACCESS_KEY_ID'), 
-				'secret' => getenv('AWS_SECRET_KEY')
+				'secret' => getenv('AWS_SECRET_KEY'),
 				'bucket' => getenv('PARAM1')
 			)
 	);
