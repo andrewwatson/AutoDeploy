@@ -6,7 +6,7 @@
 			'S3' => array(
 				'key' => getenv('AWS_ACCESS_KEY_ID'), 
 				'secret' => getenv('AWS_SECRET_KEY'),
-				'bucket' => getenv('PARAM1')
+				'bucket' => 'mixee-static-assets'
 			)
 	);
 
