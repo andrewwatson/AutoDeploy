@@ -19,6 +19,9 @@
 		)
 	);
 
+	if (!$s3->if_bucket_exists( $config['S3']['bucket'])) {
+		throw new Exception("BAD BUCKET {$config['S3']['bucket']}");
+	}
 	} catch (Exception $e) {
 		echo $e->getMessage();
 	}
