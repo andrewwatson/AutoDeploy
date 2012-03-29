@@ -9,6 +9,9 @@
 				'bucket' => 'mixee-static-assets'
 			)
 	);
+	var_dump($config);
+	die;
+
 
 	include("sdk-1.5.3/sdk.class.php");
 

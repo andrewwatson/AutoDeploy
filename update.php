@@ -1,9 +1,9 @@
 <?php
 	$config = array(
 			'S3' => array(
-				'key' => getenv('AWS_ACCESS_KEY_ID'), 
-				'secret' => getenv('AWS_SECRET_KEY'),
-				'bucket' => getenv('PARAM1')
+				'key' => 'AKIAJPPIBAYT2JKF27ZQ',
+				'secret' => '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',
+				'bucket' => 'mixee-static-assets'
 			)
 	);
 
