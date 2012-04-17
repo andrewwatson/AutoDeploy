@@ -31,11 +31,12 @@
 		if (!$queue_exists) {
 			error_log("QUEUE {$queue_name} DOES NOT EXIST... CREATING");
 			$response = $sqs->create_queue(
-								$queue_name, 
-								array(
-									"VisibilityTimeout" => 180
-								)
-							);
+				$queue_name, 
+				array(
+					"VisibilityTimeout" => 180
+				)
+			);
+
 			if (!$response->isOK()) {
 				error_log("Queue {$queue_name} doesn't exist and couldn't be created");
 				die;
