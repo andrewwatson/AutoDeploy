@@ -37,13 +37,26 @@
 			$body = $resp->body->ReceiveMessageResult->Message->Body;
 			$message = json_decode($body);
 
+			$d_resp = $sqs->delete_message($config['SQS']['queue'], $handle);
+
+			error_log("CHDIR {$message->repo}");
 			chdir($message->repo);
 			system("git pull origin master");
 
-			foreach ($message->changed_files as $filename) {
-				echo "Uploading {$filename}\n";
-         	$s3->batch()->create_object($bucket, $filename, array( 'fileUpload' => $filename));
+			$response = $s3->set_bucket_acl($bucket, AmazonS3::ACL_PUBLIC);
 
+			foreach ($message->changed_files as $filename) {
+				if (preg_match("/^\d*/", $filename)) {
+					echo "Uploading {$filename}\n";
+			         	$s3->batch()->create_object(
+						$bucket, 
+						$filename, 
+						array( 
+							'fileUpload' => $filename,
+							'acl' => AmazonS3::ACL_PUBLIC
+						)
+					);
+				}
 			}
 
 			$s3->batch()->send();
@@ -53,6 +66,7 @@
 			if (!$d_resp->isOK()) {
 				var_dump($d_resp);
 			}
+
 		}
 
 
