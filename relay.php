@@ -67,6 +67,7 @@
 				var_dump($d_resp);
 			}
 
+			mail(RECIPIENT, "CDN CODE PUSH ALERT", var_export($message, true));
 		}
 
 
